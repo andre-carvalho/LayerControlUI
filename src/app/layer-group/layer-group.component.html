@@ -1,17 +1,60 @@
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let layer of layers">
+<mat-accordion displayMode="flat" multi="true">
+  <mat-expansion-panel>
     <mat-expansion-panel-header>
       <!-- layer legend here -->
       <mat-panel-title>
-        Layer title: {{layer.title}}
+        Baselayers
       </mat-panel-title>
-      <mat-panel-description>
-        Layer description: {{layer.description}}
-      </mat-panel-description>
+      <mat-panel-description>        
+      </mat-panel-description>      
     </mat-expansion-panel-header>
-
-    <!-- layer tools here (slider, on/off) -->
-    <mat-slider min="1" max="5" step="0.5" value="1.5"></mat-slider>
-    
+    <!-- baselayers here -->
+    <mat-accordion displayMode="flat">
+      <mat-expansion-panel *ngFor="let layer of layers">
+        <mat-expansion-panel-header>
+          <!-- layer legend here -->
+          <mat-panel-title>
+            <mat-radio-button value="1">{{layer.title}}</mat-radio-button>            
+          </mat-panel-title>
+          <mat-panel-description>
+            {{layer.description}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>  
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <!-- layer legend here -->
+      <mat-panel-title>
+        Overlayers
+      </mat-panel-title>
+      <mat-panel-description>        
+      </mat-panel-description>      
+    </mat-expansion-panel-header>
+    <!-- overlayers here -->
+    <mat-accordion displayMode="flat">
+      <mat-expansion-panel *ngFor="let layer of layers">
+        <mat-expansion-panel-header>
+          <!-- layer legend here -->
+          <mat-panel-title>
+            <mat-slide-toggle>{{layer.title}}</mat-slide-toggle>
+          </mat-panel-title>
+          <mat-panel-description>
+            {{layer.description}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <!-- layer tools here (slider, on/off) -->
+        <mat-slider min="1" max="5" step="0.5" value="1.5"></mat-slider> 
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Legenda para {{layer.title}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>legenda aqui</p>
+          </mat-card-content>
+        </mat-card>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-expansion-panel>
 </mat-accordion>
